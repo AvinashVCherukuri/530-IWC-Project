@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html>
+{% extends "layout.html" %}
+{% block content %}
+    <head>
+        <title>PDX Food Carts</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+    <body>
+        <h2>Hello! Welcome to PDX Food Carts</h2>
+
+        <img src="{{url_for('static', filename='FoodCarts.jpeg')}}" alt="View of PDX Food Carts" width="550" height="400">
+
+        <h5>Look at some of Portlands Best Food Carts <a href="{{ url_for('view') }}">Here</a></h5>
+        <h5>Didn't Find your Favorite Food Cart? Give us the details you know! <a href="{{ url_for('submit') }}">Let's Go</a></h5>
+    </body>
+{% endblock %}
+</html>

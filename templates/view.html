@@ -1,0 +1,23 @@
+<html>
+{% extends "layout.html" %}
+{% block content %}   
+
+		<h2>New Food Cart Entry</h2>
+    	{% for entry in entries %}
+        <p class=entry>
+        <br>Cart Name: {{ entry.Name }} </br>
+	 	<br>Cart Address: {{entry.StreetAddress }}</br>
+        <br>City: {{entry.City}}</br>
+        <br>State: {{entry.State}}</br>
+        <br>Zip Code: {{entry.ZipCode}}</br>
+        <br>Store Hours: {{ entry.StoreHours }} </br>
+	 	<br>Mobile Number: {{entry.PhoneNumber }}</br>
+        <br>Rating: {{entry.Rating}}</br>
+        <br>Review: {{entry.Review}}</br>
+        <br>Price: {{entry.Price}}</br>
+        <br>Famous Item: {{entry.Favorite}}</br>
+        </p>
+
+    {% endfor %}
+{% endblock %}
+</html>
