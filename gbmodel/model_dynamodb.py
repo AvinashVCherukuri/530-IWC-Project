@@ -1,33 +1,34 @@
 from .Model import Model
+import uuid
 from datetime import datetime
 import boto3
 
 class model(Model):
     def __init__(self):
         self.resource = boto3.resource("dynamodb", region_name="us-east-1")
-        self.table = self.resource.Table('FoodCart')
+        self.table = self.resource.Table('bagtags')
         try:
             self.table.load()
         except:
             self.resource.create_table(
-                TableName="FoodCart",
+                TableName="bagtags",
                 KeySchema=[
                     {
-                        "AttributeName": "StoreHours",
+                        "AttributeName": "username",
                         "KeyType": "HASH"
                     },
                     {
-                        "AttributeName": "Name",
+                        "AttributeName": "tagid",
                         "KeyType": "RANGE"
                     }
                 ],
                 AttributeDefinitions=[
                     {
-                        "AttributeName": "StoreHours",
+                        "AttributeName": "username",
                         "AttributeType": "S"
                     },
                     {
-                        "AttributeName": "Name",
+                        "AttributeName": "tagid",
                         "AttributeType": "S"
                     }
                 ],
@@ -39,29 +40,24 @@ class model(Model):
 
     def select(self):
         try:
-            gbentries = self.table.scan()
+            tagentries = self.table.scan()
         except Exception as e:
             return([['scan failed', '.', '.', '.']])
 
-        return([[f['Name'], f['StreetAddress'], f['City'], f['State'], f['Zipcode'], f['StoreHours'], f['PhoneNumber'], f['Rating'], f['Review'], f['Price'], f['Favorite']] for f in gbentries['Items']])
+        return([ [f['username'], f['bagcolor'], f['cellphone'], f['description'], f['tagid'], f['status']] for f in tagentries['Items']])
 
-    def insert(self,Name, StreetAddress, City, State, Zipcode, StoreHours, PhoneNumber, Rating, Review, Price, Favorite):
-        gbitem = {
-            'Name' : Name,
-            'StreetAddress' : StreetAddress,
-            'City' : City,
-            'State' : State,
-            'Zipcode' : Zipcode,
-            'StoreHours' : StoreHours,
-            'PhoneNumber' : PhoneNumber,
-            'Rating' : Rating,
-            'Review' : Review,
-            'Price' : Price,
-            'Favorite' : Favorite
+    def insert(self, username, bagcolor, cellphone, description, status):
+        tagitem = {
+            'username' : username,
+            'bagcolor' : bagcolor,
+            'cellphone' : cellphone,
+            'description' : description,
+            'tagid' : str(uuid.uuid1()),
+            'status' : status
             }
 
         try:
-            self.table.put_item(Item=gbitem)
+            self.table.put_item(Item=tagitem)
         except:
             return False
 
