@@ -5,7 +5,9 @@ A simple bagtracking flask app.
 import flask
 from flask.views import MethodView
 from index import Index
-from createtag import Todo
+from createtag import createtag
+from viewtag import View
+from sendtext import sendtext
 
 
 print("Lost My Bag Website @lostmybag.com Started")
@@ -21,10 +23,17 @@ application.add_url_rule('/',
 
 application.add_url_rule('/static/<path:filename>',endpoint='static',view_func=application.send_static_file) 
 
-
-application.add_url_rule('/createtag/',
-                 view_func=Todo.as_view('createtag'),
+application.add_url_rule('/viewtag/',
+                 view_func=View.as_view('viewtag'),
                  methods=['GET', 'POST'])
+
+application.add_url_rule('/submit/',
+                 view_func=createtag.as_view('createtag'),
+                 methods=['GET', 'POST'])
+
+application.add_url_rule('/sendtext/<string:id>',
+                 view_func=sendtext.as_view('sendtext'),
+                 methods=['POST'])
 
 
 if __name__ == '__main__':

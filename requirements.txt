@@ -10,5 +10,8 @@ gunicorn
 # Giphy Python client
 giphy_client
 
+# twilio
+twilio
+
 #others
 requests

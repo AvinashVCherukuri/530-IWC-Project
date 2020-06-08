@@ -1,24 +1,22 @@
 {% extends "layout.html" %}
-{% block content %} 
-
-    <section>
-      <section class="welcome">
-        <h1>Hey!</h1>
-        <h1>Hello!</h1>
-        <h1>Namaste!</h1>
-      </section>
-    </section>
-
-    <img src="{{url_for('static', filename='lostmybag.jpeg')}}" alt="View of PDX Food Carts" width="550" height="400">
-
-    <section id="introduction">
-      <section class="content">
-        <h2>Tag and Secure your Bags with us</h2>
-        <p>Create a tag for each of you bags and paste the qr code on the bag.</p>
-        <p>If in case you loose your bag and someone who finds it scans the qr code, we will immediately let you know</p>
-        <p>Tagging is Free</p>
-      </section>
-    </section>
-
+{% block content %}
+    <h2>Bag Tracking App</h2>
+    <h3>About<a href="{{ url_for('static', filename='about.html') }}">About</a></h3>
+    <h3>Add New Bag <a href="{{ url_for('createtag') }}">here</a></h3>
+    <embed src="{{embed_url}}" height="250">
+    <h3>Existing Todo Entries</h3>
+    {% for entry in entries %}
+        <p class=entry>
+            {{ entry.username }} &lt;{{ entry.bagcolor }}&gt;
+	    <br>Owner's contact {{ entry.cellphone }}<br>
+	    {{ entry.description }} &lt;{{ entry.tagid }}&gt;
+           {{ entry.status }}
+            <td>
+                <form action="{{ url_for('sendtext', id=entry.tagid)}}" method="post">
+                    <input type="submit" value="SendText">
+                </form>
+            </td>
+        </p>
     {% endfor %}
+
 {% endblock %}
