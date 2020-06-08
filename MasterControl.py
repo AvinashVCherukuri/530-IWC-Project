@@ -1,6 +1,9 @@
 import multiprocessing
-import WebsiteControl, BotResponse
+import BotCode
 
-for Code in ('WebsiteControl', 'BotResponse'):
-    p = multiprocessing.Process(target=lambda: __import__(bot))
+for Code in ('BotCode'):
+    print("Program ", Code, " Start")
+    p = multiprocessing.Process(target=lambda: __import__(Code))
     p.start()
+
+print("Project Complete")

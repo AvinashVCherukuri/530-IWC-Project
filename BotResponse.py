@@ -1,48 +1,45 @@
 #   Avinash Varma
 #   Hardcoded message retrieval!
 
-def launchRA(text,name):
+def launchRA(user, name, msg):
 
-    if "hello" in text or "Hello" in text:
+    if "hello" in msg or "Hello" in msg:
         return ("Hi "+name+"!")
 
-    elif "cool" in text or "Cool" in text:
+    elif "cool" in msg or "Cool" in msg:
         return ("Yeah right!\nI know")
 
-    elif "Shit" in text or "shit" in text:
+    elif "Shit" in msg or "shit" in msg:
         return ("Yeah, this is some cool shit!")
 
-    elif "Okay" in text or "okay" in text:
+    elif "Okay" in msg or "okay" in msg:
         return ("Hmmm!\nTry 'Help' for more!")
 
-    elif "haha" in text or "Haha" in text :
+    elif "haha" in msg or "Haha" in msg :
         return ("hehehe!")
 
-    elif "hehe" in text or "Hehe" in text :
+    elif "hehe" in msg or "Hehe" in msg :
         return ("hahaha!")
 
-    elif "Nice" in text or "nice" in text :
+    elif "Nice" in msg or "nice" in msg :
         return ("Thanks "+name)
 
-    elif text == "/start":
+    elif msg == "/start":
         return ("Hi " + name+"\nHope you are doing great!\n\n")
 
-    elif "team" in text or "Team" in text :
+    elif "team" in msg or "Team" in msg :
         return ("Mr. Avinash Varma! Ohh Yeah!!!")
 
-    elif "Great" in text or "great" in text :
+    elif "Great" in msg or "great" in msg :
         return ("Thanks.\nI can do a lot more! Try 'Help'")
 
-    elif text == "End" or text == "end":
-        return ("Bye "+name+"!\nWish to see you back soon. Have a great day.")
+    elif "Bye" in msg or "bye" in msg or msg == "End" or msg == "end":
+        return ("Good Bye "+name+", Have a nice day!")
 
-    elif "Bye" in text or "bye" in text :
-        return ("Good Bye "+name+",Just say 'End', and we will be done for good!")
+    elif "Help"  in msg or "help" in msg:
+        return ("Hey "+name+"!\n\nI am LostMyBag Bot. You can say\n\nstatus - to know the status of your bag")
 
-    elif "Help"  in text or "help" in text:
-        return ("Hey "+name+"!\n\nI am not exactly sure what the project is. So lets wait and watch!")
-
-    elif "hi" in text or "Hi" in text :
+    elif "hi" in msg or "Hi" in msg :
         return ("Hello " + name + "!")
 
     else:

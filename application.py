@@ -1,11 +1,10 @@
-"""
-A simple guestbook flask application.
-"""
 import flask
 from flask.views import MethodView
 from index import Index
 from submit import Submit
 from view import View
+
+print("Lost My Bag Website @lostmybag.com Started")
 
 application = flask.Flask(__name__)       # our Flask app
 
