@@ -13,27 +13,17 @@ class model(Model):
     def select(self):
         """
         Returns guestentries list of lists
-        Each list in guest entries contains: name, streetaddress, city, state, zipcode, storehours, phonenumber, rating, review, price, favorite 
+        Each list in guest entries contains: username, bagcolor, cellphone, description, tagid, status 
         :return: List of lists
         """
         return self.guestentries
 
-    def insert(self, Name, StreetAddress, City, State, ZipCode, StoreHours, PhoneNumber, Rating, Review, Price, Favorite):
+    def insert(self, username, bagcolor, cellphone, description, tagid, status):
         """
         Appends a new list of values representing new message into guest entries
-        :param Name: String
-        :param StreetAddress: String
-        :param City: String
-        :param State: String
-        :param Zipcode: String
-        :param StoreHours: String
-        :param PhoneNumber: String
-        :param Rating: String
-        :param Review: String
-        :param Price: String
-        :param Favorite: String
+        :param username, bagcolor, cellphone, description, tagid, status
         :return: True
         """
-        params = [Name, StreetAddress, City, State, ZipCode, StoreHours, PhoneNumber, Rating, Review, Price, Favorite]
+        params = [username, bagcolor, cellphone, description, tagid, status]
         self.guestentries.append(params)
         return True
