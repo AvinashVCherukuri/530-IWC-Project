@@ -12,7 +12,7 @@ api_instance = giphy_client.DefaultApi()
 class Index(MethodView):
     def get(self):
         model = gbmodel.get_model()
-        entries = [dict(username=row[0], bagcolor=row[1], cellphone=row[2], description=row[2], tagid=row[3], status=row[4] ) for row in model.select()]
+        entries = [dict(username=row[0], bagcolor=row[1], cellphone=row[2], description=row[3], tagid=row[4], status=row[5] ) for row in model.select()]
         offset = random.randint(0,50)        
         try:
             api_response = api_instance.gifs_search_get(API_KEY, 'welcome', limit=1, offset=offset, rating='g', lang='en', fmt='json')

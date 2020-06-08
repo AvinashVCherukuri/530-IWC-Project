@@ -14,11 +14,11 @@ class sendtext(MethodView):
         Accepts POST requests, and processes the form;
         Redirect to index when completed.
         """
-        text="Hello we found you bag with Tag: %s !" (id)
+        text="Hello we found you bag with Tag: %s !" % (str(id))
         model = gbmodel.get_model()
         message = Client.messages.create(
             to="+19716786802",
-            from_="+15038511369",
+            from_="+12679152751",
             body=text
         )
         return redirect(url_for('index'))

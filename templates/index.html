@@ -3,20 +3,22 @@
     <h2>Bag Tracking App</h2>
     <h3>About<a href="{{ url_for('static', filename='about.html') }}">About</a></h3>
     <h3>Add New Bag <a href="{{ url_for('createtag') }}">here</a></h3>
-    <embed src="{{embed_url}}" height="250">
-    <h3>Existing Todo Entries</h3>
-    {% for entry in entries %}
-        <p class=entry>
-            {{ entry.username }} &lt;{{ entry.bagcolor }}&gt;
-	    <br>Owner's contact {{ entry.cellphone }}<br>
-	    {{ entry.description }} &lt;{{ entry.tagid }}&gt;
-           {{ entry.status }}
-            <td>
-                <form action="{{ url_for('sendtext', id=entry.tagid)}}" method="post">
-                    <input type="submit" value="SendText">
+    <embed src="{{embed_url}}" height="250">    
+     <h3>View all Bag tags here!</h3>
+	{% for entry in entries %}
+	<p class=entry>
+	<br>Owner UserName : {{ entry.username }} </br>
+	<br>Bag Color : {{ entry.bagcolor }}</br>
+	<br>Owner Contact Number : {{ entry.cellphone }}</br>
+	<br>Bag Description : {{ entry.description }}</br>
+	<br>Bag Tag ID : {{ entry.tagid }}</br>
+	<br>Bag Status : {{ entry.status }} </br>
+	<td>
+        	<form action="{{ url_for('sendtext', id=entry.tagid)}}" method="post">
+                	<input type="submit" value="SendText">
                 </form>
-            </td>
-        </p>
+        </td>
+	</p>
     {% endfor %}
 
 {% endblock %}
