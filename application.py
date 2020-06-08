@@ -1,10 +1,13 @@
 """
 A simple bagtracking flask app.
 """
+
 import flask
 from flask.views import MethodView
 from index import Index
 from createtag import Todo
+
+print("Lost My Bag Website @lostmybag.com Started")
 
 application = flask.Flask(__name__)       # our Flask app
 

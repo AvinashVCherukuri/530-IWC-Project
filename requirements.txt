@@ -9,3 +9,6 @@ gunicorn
 
 # Giphy Python client
 giphy_client
+
+#others
+requests

@@ -1,8 +1,7 @@
 import multiprocessing
-import BotCode
+import application, BotCode
 
-for Code in ('BotCode'):
-    print("Program ", Code, " Start")
+for Code in ('application', 'BotCode'):
     p = multiprocessing.Process(target=lambda: __import__(Code))
     p.start()
 
