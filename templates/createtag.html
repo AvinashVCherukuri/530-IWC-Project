@@ -1,21 +1,17 @@
-<!doctype html>
-
-<html>
 {% extends "layout.html" %}
 {% block content %}
 
     <body>
         <h2>Tag your bags</h2>
         <form action="{{ url_for('submit') }}" method=post>
-            <p class="heading">Associated User Name: <input type=text name=username>
-            <p class="heading">Color of Bag: <input type=text name=bagcolor>
-            <p class="heading">Cellphone of Owner! <input type=text name=cellphone>
-            <p class="heading">Enter some detail here!
-            <textarea rows=5 cols=50 name=description></textarea></p>
-            <p class="heading">Current Status <input type=text name=status>
+
+            <p class="heading">Enter a User Name: <input type=text name=username>
+            <p class="heading">What is the color of your Bag: <input type=text name=bagcolor>
+            <p class="heading">What is your mobile number: <input type=text name=cellphone>
+            <p class="heading">Can you describe your bag? <textarea rows=5 cols=50 name=description></textarea></p>
+            <p class="heading">What is the current status :<input type=text name=status>
             <p><input type=submit value=submit></p>
         </form>
     </body>
 
 {% endblock %}
-</html>

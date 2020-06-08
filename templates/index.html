@@ -1,55 +1,24 @@
 {% extends "layout.html" %}
-{% block content %}
+{% block content %} 
 
-    <header class="header">
-            <a href="#home" class="logo">Lost My Bag</a>
-            <div class="header-right">
-                <a id= "Pages" href="about.html">About</a>
-                <a id= "Pages" href="{{ url_for('createtag') }}">Create Tag</a>
-                <a id= "Pages" href="{{ url_for('viewtag') }}">View Tags</a>
-            </div>
-    </header>
+    <section>
+      <section class="welcome">
+        <h1>Hey!</h1>
+        <h1>Hello!</h1>
+        <h1>Namaste!</h1>
+      </section>
+    </section>
 
+    <img src="{{url_for('static', filename='lostmybag.jpeg')}}" alt="View of PDX Food Carts" width="550" height="400">
 
+    <section id="introduction">
+      <section class="content">
+        <h2>Tag and Secure your Bags with us</h2>
+        <p>Create a tag for each of you bags and paste the qr code on the bag.</p>
+        <p>If in case you loose your bag and someone who finds it scans the qr code, we will immediately let you know</p>
+        <p>Tagging is Free</p>
+      </section>
+    </section>
 
-
-    <footer class="footer">
-        <div class="FooterLinks">
-            <div class="LinksOne">
-            <ul>
-                <li><a href="https://www.pdx.edu/careers/internship-information-for-students">Internships</a></li>
-                <li><a href="https://www.pdx.edu/careers/events">WorkShops</a></li>
-                <li><a href="https://www.pdx.edu/careers/appointments-drop-in">Appointments</a></li>
-                <li><a href="https://www.pdx.edu/careers/contact">Contact Us</a></li>               
-            </ul>
-            </div>
-            <div class="LinksTwo">
-            <ul>
-                <li><a href="https://www.linkedin.com/school/portland-state-university/">LinkedIn</a></li>
-                <li><a href="https://portlandstate.joinhandshake.com/login">Handshake</a></li>
-                <li><a href="https://www.indeed.com/q-Pdx-jobs.html">Indeed</a></li>
-            </ul>
-            </div>
-        </div>
-
-        <div class="Credits">
-            <p>All Rights Reserved ( <a class="Network" href="https://www.linkedin.com/in/avinashvarmacherukuri/">Avinash Varma</a> & <a class="Network" href="https://www.linkedin.com/in/kaushik-chaudhary-7696a2a0/">Kaushik Chaudhary</a> )</p>
-        </div>
-    </footer>    
-
-
-    <h2>Bag Tracking App</h2>
-    <h3>About<a href="{{ url_for('static', filename='about.html') }}">About</a></h3>
-    <h3>Add New Bag <a href="{{ url_for('createtag') }}">here</a></h3>
-    <embed src="{{embed_url}}" height="250">
-    <h3>Existing Todo Entries</h3>
-    {% for entry in entries %}
-        <p class=entry>
-            {{ entry.username }} &lt;{{ entry.bagcolor }}&gt;
-	    <br>Owner's contact {{ entry.cellphone }}<br>
-	    {{ entry.description }} &lt;{{ entry.tagid }}&gt;
-           {{ entry.status }}
-        </p>
     {% endfor %}
-
 {% endblock %}

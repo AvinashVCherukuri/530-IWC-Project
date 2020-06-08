@@ -1,8 +1,40 @@
 <!doctype html>
+
 <html>
-<title>Bag Tags App, Organize your Bags</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-<div class=page>
-    {% block content %}{% endblock %}
-</div>
+	<head>
+		<title>Bag Tags App, Organize your Bags</title>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+	</head>
+
+	<body>
+		<header class="header">
+            <a href="#home" class="logo">Lost My Bag</a>
+            <div class="header-right">
+                <a id= "Pages" href="about.html">About</a>
+                <a id= "Pages" href="{{ url_for('createtag') }}">Create Tag</a>
+                <a id= "Pages" href="{{ url_for('viewtag') }}">View Tags</a>
+            </div>
+    	</header>
+	
+		<div class=page>
+    		{% block content %}{% endblock %}
+		</div>
+
+		<footer class="footer">
+	        <div class="FooterLinks">
+	            <div class="LinksOne">
+		            <ul>
+		                <li><a href="https://t.me/lostmybagbot">Telegram Bot</a></li>
+		                <li><a href="https://www.businessinsider.com/what-to-do-when-your-luggage-gets-lost-2015-6">Lost Luggage Advice 1</a></li>
+		                <li><a href="https://www.smartertravel.com/lost-luggage-heres/">Lost Luggage Advice 2</a></li>
+		                <li><a href="https://www.theinterngroup.com/our-blog/lessons-learned-after-i-lost-my-bag-abroad/">Lost Luggage Advice 3</a></li>               
+		            </ul>
+	            </div>
+	        </div>
+
+	        <div class="Credits">
+	            <p>All Rights Reserved ( <a class="Network" href="https://www.linkedin.com/in/avinashvarmacherukuri/">Avinash Varma</a> & <a class="Network" href="https://www.linkedin.com/in/kaushik-chaudhary-7696a2a0/">Kaushik Chaudhary</a> )</p>
+	        </div>
+    	</footer>
+	</body>
 </html>
