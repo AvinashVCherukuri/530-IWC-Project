@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Organize your bags...</h2>
+    <form action="{{ url_for('createtag') }}" method=post>
+        <p class="heading">Associated User Name: <input type=text name=username>
+	<p class="heading">Color of Bag: <input type=text name=bagcolor>
+	<p class="heading">Cellphone of Owner! <input type=text name=cellphone>
+        <p class="heading">Enter some detail here!
+	<textarea rows=5 cols=50 name=description></textarea></p>
+    <p class="heading">Current Status <input type=text name=status>
+	<p><input type=submit value=AddBag></p>
+    </form>
+{% endblock %}

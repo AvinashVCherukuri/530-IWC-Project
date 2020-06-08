@@ -1,2 +1,1 @@
-# 530 IWC Project
-
+# CS530Project
