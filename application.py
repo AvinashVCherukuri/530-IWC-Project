@@ -9,12 +9,17 @@ from createtag import createtag
 from viewtag import View
 from sendtext import sendtext
 from about import About
+from qr import Qr
 
 
 print("Lost My Bag Website @lostmybag.com Started")
 
 
 application = flask.Flask(__name__)       # our Flask app
+
+application.add_url_rule('/qr/',
+                 view_func=Qr.as_view('qr'),
+                 methods=["GET"])
 
 application.add_url_rule('/about/',
                  view_func=About.as_view('about'),

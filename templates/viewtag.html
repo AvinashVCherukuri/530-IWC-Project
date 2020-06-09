@@ -11,6 +11,11 @@
         <br>Bag Description : {{ entry.description }}</br>
         <br>Bag Tag ID : {{ entry.tagid }}</br>
         <br>Bag Status : {{ entry.status }} </br>
+        <td>
+            <form action="{{ url_for('sendtext', id=entry.tagid)}}" method="post">
+                    <input type="submit" value="SendText">
+            </form>
+        </td>
         </p>
 
     {% endfor %}

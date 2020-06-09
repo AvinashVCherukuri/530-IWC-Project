@@ -21,10 +21,10 @@ class createtag(MethodView):
         Redirect to index when completed.
         """
         model = gbmodel.get_model()
-        model.insert(request.form['username'], request.form['bagcolor'], request.form['cellphone'], request.form['description'], request.form['status'], request.form['tagid'])
+        model.insert(request.form['username'], request.form['bagcolor'], request.form['cellphone'], request.form['description'], tagid, request.form['status'])
 
 
-        payload = "bg-color=%23ffffff&width=128&fg-color=%23000000&height=128&content=http%3A%2F%2F" + "here" + tagid
+        payload = "bg-color=%23ffffff&width=128&fg-color=%23000000&height=128&content=http%3A%2F%2F" + "www.google.com"
         headers = {
                     'x-rapidapi-host': "neutrinoapi-qr-code.p.rapidapi.com",
                     'x-rapidapi-key': QRToken,
@@ -32,8 +32,6 @@ class createtag(MethodView):
                     }
 
         response = requests.request("POST", url, data=payload, headers=headers)
-        print(response.text)
-        embed_url = response.data[0].embed_url
-
-        return redirect(url_for('index'))
-        return render_template('index.html',embed_url=embed_url)
+        png = response.text + ".png"
+        
+        return render_template('qr.html',embed_url=png)

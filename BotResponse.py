@@ -6,13 +6,14 @@ import gbmodel
 def launchRA(user, name, msg):
 
     model = gbmodel.get_model()
-        entries = [dict(username=row[0], bagcolor=row[1], cellphone=row[2], description=row[3], status=row[4], tagid=row[5]) for row in model.select()]
+    entries = [dict(username=row[0], bagcolor=row[1], cellphone=row[2], description=row[3], status=row[4], tagid=row[5]) for row in model.select()]
 
 
-    if msg = "Status" or msg = "status":
+    if msg == "Status" or msg == "status":
         for lists in entries :
             if  user in lists.values():
-                return(lists["status"])  
+                print(lists)
+                return(lists["status"], lists["tagid"])  
 
 
     elif "hello" in msg or "Hello" in msg:
