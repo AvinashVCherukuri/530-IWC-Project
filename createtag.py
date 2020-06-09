@@ -4,6 +4,7 @@ import gbmodel
 import requests
 import os
 import uuid
+from PIL import Image
 
 
 QRToken = os.environ['qrapi']
@@ -32,6 +33,11 @@ class createtag(MethodView):
                     }
 
         response = requests.request("POST", url, data=payload, headers=headers)
-        png = response.text + ".png"
+        png = response.text
+
+        imgSize = (703,1248)# the image size
+        img = Image.frombytes('L', imgSize, png)
+        img.save("foo.jpg")# can give any format you like .png
         
-        return render_template('qr.html',embed_url=png)
+        image = img + ".png"
+        return render_template('qr.html',embed_url=image)
