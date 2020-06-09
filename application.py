@@ -8,6 +8,7 @@ from index import Index
 from createtag import createtag
 from viewtag import View
 from sendtext import sendtext
+from about import About
 
 
 print("Lost My Bag Website @lostmybag.com Started")
@@ -15,6 +16,9 @@ print("Lost My Bag Website @lostmybag.com Started")
 
 application = flask.Flask(__name__)       # our Flask app
 
+application.add_url_rule('/about/',
+                 view_func=About.as_view('about'),
+                 methods=["GET"])
 
 application.add_url_rule('/',
                  view_func=Index.as_view('index'),
