@@ -1,6 +1,9 @@
 from .Model import Model
 from datetime import datetime
 import boto3
+import uuid
+
+tagid = str(uuid.uuid1())
 
 class model(Model):
     def __init__(self):
@@ -45,7 +48,7 @@ class model(Model):
 
         return([ [f['username'], f['bagcolor'], f['cellphone'], f['description'], f['tagid'], f['status']] for f in tagentries['Items']])
 
-    def insert(self, username, bagcolor, cellphone, description, status):
+    def insert(self, username, bagcolor, cellphone, description, tagid, status):
         tagitem = {
             'username' : username,
             'bagcolor' : bagcolor,
