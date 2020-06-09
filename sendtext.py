@@ -35,7 +35,7 @@ class sendtext(MethodView):
             ip = request.remote_addr
         
         # if app is running on localhost, it will get 127.0.0.1 which private ip and cannot find IpGeo data. So taking default PublicIP
-        if ip == '127.0.0.1':
+        if ip == '172.17.0.1' or ip == '127.0.0.1':
             ip = '76.27.220.107'
         
         #look GeoDat from IP
