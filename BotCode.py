@@ -1,13 +1,16 @@
 #   Avinash Varma
 #   Code Responsible for the running of telegram bot @IWCgobot
+# 1105528767:AAHw0JFtfExVC5wj7wz7L10uKVN7FFFZDkQ
 
 import json
 import requests
 import time
 import BotResponse
+import os
 
+BotToken = os.environ['botapi']
 
-URL = "https://api.telegram.org/bot{}/".format("1105528767:AAHw0JFtfExVC5wj7wz7L10uKVN7FFFZDkQ")
+URL = "https://api.telegram.org/bot{}/".format(BotToken)
 
 
 def get_url(url) :
@@ -19,7 +22,7 @@ def get_url(url) :
 
 def message(message_id, user_id, user_first_name, user_message) :
 
-    reply = BotResponse.launchRA(user, user_first_name, user_message)
+    reply = BotResponse.launchRA(user_id, user_first_name, user_message)
     send_message(reply, message_id)
     print("\n"+user_id+" : "+user_message+"\n\tbot : "+reply)
     return (0)
