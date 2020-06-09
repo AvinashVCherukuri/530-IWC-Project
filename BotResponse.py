@@ -1,9 +1,21 @@
 #   Avinash Varma
 #   Hardcoded message retrieval!
 
+import gbmodel
+
 def launchRA(user, name, msg):
 
-    if "hello" in msg or "Hello" in msg:
+    model = gbmodel.get_model()
+        entries = [dict(username=row[0], bagcolor=row[1], cellphone=row[2], description=row[3], status=row[4], tagid=row[5]) for row in model.select()]
+
+
+    if msg = "Status" or msg = "status":
+        for lists in entries :
+            if  user in lists.values():
+                return(lists["status"])  
+
+
+    elif "hello" in msg or "Hello" in msg:
         return ("Hi "+name+"!")
 
     elif "cool" in msg or "Cool" in msg:

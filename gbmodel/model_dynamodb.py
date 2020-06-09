@@ -1,5 +1,4 @@
 from .Model import Model
-import uuid
 from datetime import datetime
 import boto3
 
@@ -52,7 +51,7 @@ class model(Model):
             'bagcolor' : bagcolor,
             'cellphone' : cellphone,
             'description' : description,
-            'tagid' : str(uuid.uuid1()),
+            'tagid' : tagid,
             'status' : status
             }
 
