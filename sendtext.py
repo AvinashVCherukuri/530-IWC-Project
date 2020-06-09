@@ -24,6 +24,8 @@ class sendtext(MethodView):
             ip = request.headers.getlist("X-Forwarded-For")[0]
         else:
             ip = request.remote_addr
+        if ip = '127.0.0.0':
+            ip = '76.27.220.107'
         response = ipdata.lookup(ip)
         city = response['city']
         country_name = response['country_name']
