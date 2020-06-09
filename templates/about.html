@@ -1,12 +1,15 @@
-<h2>About this app</h2>
-<br/>
-<p>
-  Author: Kaushik and Avinash <br/>
-  CS530 Project <br/>
-  Developers
-</p>
+{% extends "layout.html" %}
+{% block content %} 
 
-<p>
-  This app represents a small demo with Flask and DynomoDB based on Python. <br/>
-  You can create bag bag tag, keep list handy and when you loose, you can track it.
-</p>
+    <img src="{{url_for('static', filename='lostmybag.jpeg')}}" alt="View of lostmybag" width="550" height="400">
+
+    <section id="introduction">
+      <section class="content">
+        <h2>Tag and Secure your Bags with us</h2>
+        <p>This app represents a small demo with Flask and DynomoDB based on Python. </p>
+        <p>You can create bag tag, keep list handy and when you loose, you can track it./p>
+        <h2>This website is designed and developed by Kaushik and Avinash</h2>
+      </section>
+    </section>
+    
+{% endblock %}
