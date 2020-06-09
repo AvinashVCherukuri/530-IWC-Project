@@ -24,13 +24,13 @@ class sendtext(MethodView):
             ip = request.headers.getlist("X-Forwarded-For")[0]
         else:
             ip = request.remote_addr
-        if ip = '127.0.0.0':
+        if ip == '127.0.0.1':
             ip = '76.27.220.107'
         response = ipdata.lookup(ip)
         city = response['city']
         country_name = response['country_name']
 
-        text="Hello we found you bag with Tag: %s at City: %s, country: %s use by IP:!" % (str(id),city,country_name,ip)
+        text="Hello we found you bag with Tag: %s at City: %s, country: %s use by IP:%s !" % (str(id),str(city),str(country_name),str(ip))
         model = gbmodel.get_model()
         message = Client.messages.create(
             to="+19716786802",
