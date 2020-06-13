@@ -13,6 +13,9 @@ giphy_client
 # twilio
 twilio
 
+# ipdata for IPGeoLocation
+ipdata
+
 #others
 requests
-ipdata
+
