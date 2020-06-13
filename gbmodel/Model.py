@@ -9,10 +9,13 @@ class Model():
     def insert(self, username, bagcolor, cellphone, description, tagid, status):
         """
         Inserts entry into database
-        :param name: String
-        :param email: String
-        :param message: String
-        :return: none
+        :param username: String
+        :param bagcolor: String
+        :param cellphone: String
+        :param description: String
+        :param tagid: String
+        :param status: String
+        :return: dictionary of ITEMs
         :raises: Database errors on connection and insertion
         """
         pass
