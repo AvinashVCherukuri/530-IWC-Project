@@ -22,7 +22,7 @@ application.add_url_rule('/about/',
                  view_func=About.as_view('about'),
                  methods=["GET"])
 
-# code when someone submits the form
+# code when someone submits the form to create new entry/tag of Bag
 application.add_url_rule('/submit/',
                  view_func=createtag.as_view('createtag'),
                  methods=['GET', 'POST'])
@@ -32,7 +32,7 @@ application.add_url_rule('/qr/',
                  view_func=Qr.as_view('qr'),
                  methods=["GET"])
 
-# code when some one veiws list of tags
+# code when some one veiws list of existing tags
 application.add_url_rule('/viewtag/',
                  view_func=View.as_view('viewtag'),
                  methods=['GET', 'POST'])
