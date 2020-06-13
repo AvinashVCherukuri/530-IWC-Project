@@ -1,14 +1,12 @@
 from flask import redirect, request, url_for, render_template
 from flask.views import MethodView
 import gbmodel
-import requests
 import os
 import uuid
-from PIL import Image
-
-
-QRToken = os.environ['qrapi']
-url = "https://neutrinoapi-qr-code.p.rapidapi.com/qr-code"
+import urllib.request
+import shutil
+from os import listdir
+from os.path import isfile, join
 
 tagid = str(uuid.uuid1())
 
@@ -24,20 +22,27 @@ class createtag(MethodView):
         model = gbmodel.get_model()
         model.insert(request.form['username'], request.form['bagcolor'], request.form['cellphone'], request.form['description'], tagid, request.form['status'])
 
+        url = "http://api.qrserver.com/v1/create-qr-code/?data=" + "http://ilostmybags.ipq.co/sendtext/" + tagid + "&size=100x100"
 
-        payload = "bg-color=%23ffffff&width=128&fg-color=%23000000&height=128&content=http%3A%2F%2F" + "www.google.com"
-        headers = {
-                    'x-rapidapi-host': "neutrinoapi-qr-code.p.rapidapi.com",
-                    'x-rapidapi-key': QRToken,
-                    'content-type': "application/x-www-form-urlencoded"
-                    }
+        """
+        This function takes in the url for the api request. 
+        It fist removes all the files in the statisc folder with .jpg extension and then download the new jpg qr code and places it in the statis folder.
+        """
+        def download_image(url):
+            location = os.getcwd() + "/static"
+            onlyfiles = [f for f in listdir(location) if isfile(join(location, f))]
 
-        response = requests.request("POST", url, data=payload, headers=headers)
-        png = response.text
+            for tryfile in onlyfiles:
+                if ".jpg" in tryfile:
+                    tryfile = location + "/" + tryfile
+                    os.remove(tryfile)
 
-        imgSize = (703,1248)# the image size
-        img = Image.frombytes('L', imgSize, png)
-        img.save("foo.jpg")# can give any format you like .png
-        
-        image = img + ".png"
+            file = tagid + ".jpg"
+            urllib.request.urlretrieve(url, file)
+            shutil.move(file, location)
+
+            return file
+
+        image = download_image(url)
+
         return render_template('qr.html',embed_url=image)

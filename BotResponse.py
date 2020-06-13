@@ -1,14 +1,12 @@
-#   Avinash Varma
-#   Hardcoded message retrieval!
-
 import gbmodel
 
+# This definition tells what message we have to reply back to the user
 def launchRA(user, name, msg):
 
     model = gbmodel.get_model()
     entries = [dict(username=row[0], bagcolor=row[1], cellphone=row[2], description=row[3], status=row[4], tagid=row[5]) for row in model.select()]
 
-
+    # This is where the bot compares the user name to the ones in the Database and gets their status
     if msg == "Status" or msg == "status":
         for lists in entries :
             if  user in lists.values():

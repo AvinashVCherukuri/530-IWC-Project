@@ -2,6 +2,6 @@
 {% block content %} 
 
     <h2>Download this QR code and Stick it on your bag</h2>
-    <embed src="{{embed_url}}" height="250">
+    <img src="{{url_for('static', filename=embed_url)}}" alt="View of lostmybag" width="550" height="400">
     
 {% endblock %}
